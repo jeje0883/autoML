@@ -1,0 +1,10 @@
+[build-system]
+requires = [
+    "numpy",
+    "pandas",
+    "seaborn",
+    "matplotlib",
+    "sklearn"
+
+]
+build-backend = "setuptools.build_meta"
