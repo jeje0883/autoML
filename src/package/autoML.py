@@ -38,7 +38,7 @@ def comparescoreclassifier(X_train, X_test, y_train, y_test):
     classifiers = [
         SVC(gamma=2, C=1),
         LinearSVC( C=0.025),
-        SGDClassifier(loss="hinge", penalty="l2", max_iter=5),
+        SGDClassifier(loss="hinge", penalty="l2", max_iter=10),
         KNeighborsClassifier(3),
         GaussianProcessClassifier(1.0 * RBF(1.0)),
         GaussianNB(),
@@ -56,7 +56,8 @@ def comparescoreclassifier(X_train, X_test, y_train, y_test):
         classifier.fit(X_train, y_train)
         testscore = classifier.score(X_test, y_test)
         trainscore = classifier.score(X_train, y_train)
-        scoredf = scoredf.append(pd.Series([name, testscore, trainscore]), ignore_index=True)
+        scoredf2 = pd.DataFrame([[name, testscore, trainscore]])
+        scoredf = pd.concat([scoredf, scoredf2], ignore_index=True)
 
     scoredf.columns=['model','test score','train score']
     print(scoredf)
