@@ -60,7 +60,7 @@ def comparescoreclassifier(X_train, X_test, y_train, y_test):
         scoredf = pd.concat([scoredf, scoredf2], ignore_index=True)
 
     scoredf.columns=['model','test score','train score']
-    print(scoredf)
+    return scoredf
 
 #if __name__ == '__main__':
     #pass
